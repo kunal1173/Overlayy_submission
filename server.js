@@ -19,10 +19,7 @@ const prompt = ChatPromptTemplate.fromMessages([
   [
     "system",
     `
-     I will provide you with information about the user's interaction with a website. The numbers 
-    in front of keywords represent the number of times the word is clicked or hovered upon. 
-    Based on this information, tell me where the user's attention is most focused and what they 
-    are trying to find on the website.Generate paragraph without the reasoning of how you arrived at your output.
+    I will provide you some keywords based on these keywords generate a paragraph showcasing what users are looking for and what is its interest.
 
     `
   ],
