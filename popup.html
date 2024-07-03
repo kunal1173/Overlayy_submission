@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Interests</title>
-  <script src="popup.js"></script>
+  <title>Interests</title>
+  <style>
+    
+    #interest-data {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 300px; 
+    }
+    #analyze-button {
+      display: block;
+      margin: 10px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #analyze-button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <h1>User Interests</h1>
-  <div id="interest-data"></div>
+  <div id="interest-data">Click "Analyze Interests" to see the paragraph...</div>
   <button id="analyze-button">Analyze Interests</button>
+
+  <script src="popup.js"></script>
 </body>
 </html>

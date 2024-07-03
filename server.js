@@ -19,7 +19,7 @@ const prompt = ChatPromptTemplate.fromMessages([
   [
     "system",
     `
-    I will provide you some keywords based on these keywords generate a paragraph showcasing what users are looking for and what is its interest.
+   You are a sales crawler who is getting each and every action of the user when he came on the website,  you need to give me a crisp, clear and impactful summary of what the user seemed more interested in based on the above inputs. Your output should be strictly inferred from the inputs. Your output would directly be shown to the clients who are the owners of the website and would pay us so make sure it's in a simple yet impactful language
 
     `
   ],
@@ -30,7 +30,7 @@ app.post('/analyze', async (req, res) => {
   const { userInterests } = req.body;
 
   try {
-    // Save userInterests to a file
+   
     fs.writeFileSync('userInterests.txt', JSON.stringify(userInterests, null, 2), 'utf8');
     console.log('User interests data saved to userInterests.txt');
 
@@ -39,10 +39,11 @@ app.post('/analyze', async (req, res) => {
       input: JSON.stringify(userInterests),
     });
 
-    // Log the response from LLM
+ 
     console.log("LLM Response:", response);
 
-    res.json({ response });
+    
+    res.json({ response: response.text });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'An error occurred' });
