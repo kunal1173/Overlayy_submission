@@ -6,7 +6,7 @@ function extractKeywords(element) {
   if (keywords) {
     keywords = keywords.map(keyword => keyword.toLowerCase());
   }
-  return keywords ? keywords.slice(0, 5) : [];
+  return keywords ? keywords.slice(0, 10) : [];
 }
 
 function updateUserInterests(keywords) {
@@ -41,6 +41,22 @@ document.addEventListener('scroll', () => {
   chrome.storage.local.set({ userInterests });
 });
 
+document.addEventListener('input', (event) => {
+  let keywords = extractKeywords(event.target.value || "");
+  console.log('Input Keywords:', keywords);
+  updateUserInterests(keywords);
+  chrome.storage.local.set({ userInterests });
+});
+
+document.addEventListener('keydown', (event) => {
+  let target = event.target;
+  if (target.tagName.toLowerCase() === 'input' || target.tagName.toLowerCase() === 'textarea') {
+    let keywords = extractKeywords(target.value || "");
+    console.log('Keydown Keywords:', keywords);
+    updateUserInterests(keywords);
+    chrome.storage.local.set({ userInterests });
+  }
+});
 
 setInterval(() => {
   chrome.storage.local.set({ userInterests }, () => {
